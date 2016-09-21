@@ -37,7 +37,6 @@ length' (x:xs) = 1 + length' xs
 null' [] = True
 null' _  = False
 
-
 elem' _ [] = False
 elem' y (x:xs) = if y == x then True else elem' y xs
 
@@ -82,3 +81,4 @@ uncurry' f (x, y) = f x y
 
 map' _ [] = []
 map' f (x:xs) = f x : map' f xs
+
