@@ -82,3 +82,13 @@ uncurry' f (x, y) = f x y
 map' _ [] = []
 map' f (x:xs) = f x : map' f xs
 
+stutter [] = []
+stutter (x:xs) = x : x : stutter xs
+
+compress [] = []
+compress (x:xs) = if x == head xs then x : compress (tail xs) else x : compress xs
+
+findIndices f xs = myfindIndices 0 f xs where
+  myfindIndices _ _ [] = []
+  myfindIndices n f (x:xs) = (if f x then [n] else []) ++ myfindIndices (n+1) f xs
+
