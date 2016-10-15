@@ -1,6 +1,39 @@
-import Prelude
+
+-- * Lecture 2
 
 
+last' xs = head (reverse xs)
+
+last'' [] = error "last'': empty list"
+last'' [x] = x
+last'' xs = last'' (tail xs)
+
+  
+
+init' xs = reverse $ tail (reverse xs)
+
+ 
+init'' [] = error "init'': empty list"
+init'' [x] = []
+init'' (x:xs) = x : init'' xs
+
+and' [] = True
+and' (x:xs) = x && and' xs
+
+or' [] = False
+or' (x:xs) = x || or' xs
+
+
+all' f xs = and' (map f xs)
+
+any' f xs = or' (map f xs)
+
+maximun' [] = error "maximum'': empty list"
+maximum' (x:xs) = innerMaximum x xs where
+  innerMaximum n [] = n
+  innerMaximum n (y:ys) = if n < y then innerMaximum y ys else innerMaximum n ys
+
+-- * Lecture 1
 
 reverse' [] = []
 reverse' (x:xs) = reverse' xs ++ [x]
